@@ -7,7 +7,7 @@ The scrips uses js2py, which can be installed using PIP. Python is also needed, 
 ## Usage
 > gpx.py *trackId*
 
-You can find the trackId in the url when you share the iSki track: https://share.iski.cc/shares/share_iski/tracks/*XXXXX*. 
+You can find the trackId in the url when you share the iSki track: https://share.iski.cc/shares/share_iski/tracks/XXXXXXXX. 
 
 **Only copy the id, do not include the lang url parameter.**
 
