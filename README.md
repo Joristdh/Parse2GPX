@@ -2,7 +2,7 @@
 Simple script to export an iSki track to a GPX file. The output file will be named yyyy-mm-dd.gpx. I do not know how the script handles different timezones, but the *z* param in the *toDate(e, z)* method can be adjusted to your personal preference.
 
 ## Prerequisites
-The scrips uses js2py, which can be installed using PIP. Python is also needed, of course
+The scrips uses js2py, which can be installed using PIP. Python is also needed, of course.
 
 ## Usage
 > gpx.py *trackId*
