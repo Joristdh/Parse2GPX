@@ -14,7 +14,7 @@ def split_takeout_json():
     Segments are filtered to only include related activities.
     """
     for take in next(walk('takeout'), (None, None, []))[2]:
-        with open('takeout/' + take, 'r') as t:
+        with open('takeout/' + take, 'r', encoding='utf-8') as t:
             arr = []
             for obj in loads(t.read())['timelineObjects']:
                 if 'activitySegment' in obj and 'activityType' in obj['activitySegment']:
