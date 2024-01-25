@@ -49,15 +49,15 @@ for file in next(walk('json'), (None, None, []))[2]:
                     gpx.write('\n\t\t<trkseg>\n')
 
                     # Gathers + fix coords
-                    d = {'locations': []}
+                    data = {'locations': []}
                     for p in segment['simplifiedRawPath']['points']:
-                        d['locations'].append({"latitude": p["latE7"] / 10000000, "longitude": p["lngE7"] / 10000000})
+                        data['locations'].append({"latitude": p["latE7"] / 1e7, "longitude": p["lngE7"] / 1e7})
 
                     # Get elevations
-                    res = post(url=API, json=d)
+                    res = post(url=API, json=data)
                     while res.status_code == 429:
                         sleep(5)
-                        res = post(url=API, json=d)
+                        res = post(url=API, json=data)
 
                     # Write track points
                     for c, t in zip(res.json()['results'], segment['simplifiedRawPath']['points']):
