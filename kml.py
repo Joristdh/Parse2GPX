@@ -1,9 +1,10 @@
-from json import loads, dumps
 from os import walk
 from sys import argv
 from time import sleep
 
 from requests import post
+
+from json import loads, dumps
 
 API = 'https://api.open-elevation.com/api/v1/lookup'
 
@@ -15,11 +16,9 @@ def split_takeout_json():
     """
     for take in next(walk('takeout'), (None, None, []))[2]:
         with open('takeout/' + take, 'r', encoding='utf-8') as t:
-            arr = []
-            for obj in loads(t.read())['timelineObjects']:
-                if 'activitySegment' in obj and 'activityType' in obj['activitySegment']:
-                    if obj['activitySegment']['activityType'] in ['SKIING', 'SNOWBOARDING', 'IN_GONDOLA_LIFT']:
-                        arr.append(obj['activitySegment'])
+            arr = [x['activitySegment'] for x in loads(t.read())['timelineObjects'] if
+                   'activitySegment' in x and 'activityType' in x['activitySegment'] and
+                   x['activitySegment']['activityType'] in ['SKIING', 'SNOWBOARDING', 'IN_GONDOLA_LIFT']]
             days = set([x['duration']['endTimestamp'].split('T')[0] for x in arr])
             for day in days:
                 with open('json/' + day + '.json', 'w') as d:
