@@ -1,15 +1,26 @@
-# iSki2GPX
-Simple script to export an iSki track to a GPX file. The output file will be named yyyy-mm-dd.gpx. I do not know how the script handles different timezones, but the *z* param in the *toDate(e, z)* method can be adjusted to your personal preference.
+# [iSki|Takeout]2GPX
+Simple script to export an iSki track or a Google Takeout timeline to a GPX file. The output file will be named yyyy-mm-dd.gpx. 
 
-## Prerequisites
+## Google Takeout
+Works by parsing the semantic location history of the takeout. Some steps require manual corrections in-between. Ensure the activities are correctly labeled in the Google Maps timeline before initiating the takeout.
+
+### Usage
+> jsn.py
+
+The script assumes separate daily JSON files in the **json** directory. There is an incomplete/untested helper function _split_takeout_json()_ that splits the monthly timeline files into days, filtered to only contain relevant activities.
+
+## iSKI
+I do not know how the script handles different timezones, but the *z* param in the *toDate(e, z)* method can be adjusted to your personal preference.
+
+### Prerequisites
 The scrips uses js2py, which can be installed using PIP. Python is also needed, of course.
 
-## Usage
-> gpx.py *trackId*
+### Usage
+> iski.py *trackId*
 
 You can find the trackId in the url when you share the iSki track: https://share.iski.cc/shares/share_iski/tracks/XXXXXXXX. 
 
 **Only copy the id, do not include the lang url parameter.**
 
 You can input multiple trackIds by separating them with spaces:
->gpx.py *trackId1* *trackId2* *trackId3* 
+>iksi.py *trackId1* *trackId2* *trackId3* 

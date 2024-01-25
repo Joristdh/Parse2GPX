@@ -1,14 +1,17 @@
-import json
 from sys import argv
-from js2py import eval_js
 from urllib import request
+
+from js2py import eval_js
+
+import json
+
 
 # Use JS to convert timestamp to datestring. The z param allows for manual timezone correction
 def toDate(e, z = 2):
     date = eval_js(f'new Date({e})')
     return f'{date.getHours()-z:02}:{date.getMinutes():02}:{date.getSeconds():02}'
 
-# The base url for iski shares
+# The base url for iSki shares
 base = 'https://share.iski.cc/shares/share_iski/tracks/'
 for id in argv[1:]:
     # Parse the date from the page
