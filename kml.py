@@ -21,15 +21,15 @@ def split_takeout_json():
                    x['activitySegment']['activityType'] in ['SKIING', 'SNOWBOARDING', 'IN_GONDOLA_LIFT']]
             days = set([x['duration']['endTimestamp'].split('T')[0] for x in arr])
             for day in days:
-                with open('json/' + day + '.json', 'w') as d:
-                    d.write('[')
+                with open('json/' + day + '.json', 'w') as x:
+                    x.write('[')
             for obj in arr:
-                with open('json/' + obj['duration']['endTimestamp'].split('T')[0] + '.json', 'a') as d:
-                    d.write(dumps(obj) + ',')
+                with open('json/' + obj['duration']['endTimestamp'].split('T')[0] + '.json', 'a') as x:
+                    x.write(dumps(obj) + ',')
             for day in days:
-                with open('json/' + day + '.json', 'rb+') as d:
-                    d.seek(-1, 2)
-                    d.write(str.encode(']'))
+                with open('json/' + day + '.json', 'rb+') as x:
+                    x.seek(-1, 2)
+                    x.write(str.encode(']'))
 
 
 if len(argv) > 1 and argv[1] == 'split':
