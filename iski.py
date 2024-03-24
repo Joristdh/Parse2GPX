@@ -24,7 +24,12 @@ def get_unique_filename(filename):
 
 # The base url for iSki shares
 base = 'https://share.iski.cc/shares/share_iski/tracks/'
-for id in argv[1:]:
+
+total_ids = len(argv[1:])
+
+for index, id in enumerate(argv[1:], start=1):
+    print(f"({index}/{total_ids}) Saving {id} into file:", end=' ')
+
     # Parse the date from the page
     html = request.urlopen(base + id).read().decode('utf-8')
     date = html[html.find('<br />'):html.find(' °C')].split(' ')[-2].replace(',','').split('/')
@@ -36,6 +41,8 @@ for id in argv[1:]:
     # Check if GPX file already exists
     gpx_filename = f'{date}.gpx'
     gpx_filename = get_unique_filename(gpx_filename)
+
+    print(gpx_filename)
 
     # Create GPX file template
     with open(gpx_filename, 'w') as file:
