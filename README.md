@@ -24,3 +24,20 @@ You can find the trackId in the url when you share the iSki track: https://share
 
 You can input multiple trackIds by separating them with spaces:
 >iksi.py *trackId1* *trackId2* *trackId3* 
+
+### iSKI ID Parser
+You can use `iski_id_parser.py` to extract IDs from a file named `input.txt` in the same directory by running:
+> iski_id_parser.py
+
+You will get all found IDs seperated by spaces, which can then be copied and pasted for the iSKI parser.
+
+This method can be useful if you are exporting multiple tracks, which were all shared from the app.
+
+Example input.txt:
+~~~
+<iSKI username> in location
+X Hm, Y Lifts, Z km  #iSKIhttps://share.iski.cc/shares/share_iski/tracks/<trackID>?lang=en
+<iSKI username> in location
+X Hm, Y Lifts, Z km  #iSKIhttps://share.iski.cc/shares/share_iski/tracks/<trackID>?lang=en
+...
+~~~
